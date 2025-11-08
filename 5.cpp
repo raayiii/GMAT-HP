@@ -16,29 +16,28 @@ struct SensorData {
 
 void serializeData(const SensorData& data, char* outputBuffer, size_t bufferSize) {
     snprintf(outputBuffer, bufferSize,
-             "%s;%d;%d;%d;%d;%.4f;%.6f;%.6f;",
-             data.id,
-             data.error_code,
-             data.hours,
-             data.minutes,
-             data.seconds,
-             data.altitude,
-             data.longitude,
-             data.latitude);
+        "%s;%d;%d;%d;%d;%.4f;%.6f;%.6f;",
+        data.id,
+        data.error_code,
+        data.hours,
+        data.minutes,
+        data.seconds,
+        data.altitude,
+        data.longitude,
+        data.latitude);
 }
 
 void deserializeData(const char* concatenatedString, SensorData& targetData) {
-    
     int result = sscanf(concatenatedString,
-                        "%[^;];%d;%d;%d;%d;%lf;%lf;%lf;",
-                        targetData.id,
-                        &targetData.error_code,
-                        &targetData.hours,
-                        &targetData.minutes,
-                        &targetData.seconds,
-                        &targetData.altitude,
-                        &targetData.longitude,
-                        &targetData.latitude);
+        "%[^;];%d;%d;%d;%d;%lf;%lf;%lf;",
+        targetData.id,
+        &targetData.error_code,
+        &targetData.hours,
+        &targetData.minutes,
+        &targetData.seconds,
+        &targetData.altitude,
+        &targetData.longitude,
+        &targetData.latitude);
     }
 
 int main() {
